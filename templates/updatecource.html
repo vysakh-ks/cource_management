@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <h2 class="text-center py-3">Courses Offered</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+            <th scope="col">Capacity</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for i in course %}
+        <tr>
+            <form action = "{% url "cource:update_value" i.id %}" method = 'POST'>
+                {% csrf_token %}
+            <td><input name="title" type="text" value = "{{i.title}}"  class="form-control"></td>
+            <td><input name="description" class="form-control input-lg w-100  overflow-scroll" type = "textarea" value = "{{i.description}}"></td>
+            <td><input name="instructor" type="text" value = "{{i.instructor}}"  class="form-control"></td>
+            <td><input name="startdate" type="date" value = "{{i.start_date|date:'Y-m-d' }}"  class="form-control"></td>
+            <td><input name="enddate" type="date" value = "{{i.end_date|date:'Y-m-d'}}" class="form-control"></td>
+            <td><input name="capacity" type="number" value = "{{i.capacity}}"  class="form-control"></td>
+            <td><button class="btn btn-primary" type="submit">Update</button></td>
+            </form>
+            <td><a href="{% url "cource:delete_cource" i.id %}" class="btn btn-primary">Delete</a></td>
+        </tr>
+        {% endfor %}
+    
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

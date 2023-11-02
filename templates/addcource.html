@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center">Add Course</h2>
+<div class="container w-50">
+    <form action = "{% url "cource:cource_data" %}" method = 'POST'>
+        {% csrf_token %}
+    <div class="form-group py-2">
+        <label for="exampleFormControlInput1">Title</label>
+        <input type="text" name="title" class="form-control" id="exampleFormControlInput1">
+    </div>
+  
+    <div class="form-group py-2">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+        <div class="form-group py-2">
+        <label for="exampleFormControlInput1">Instructor</label>
+        <input type="text" name="instructor" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="form-group py-2">
+        <label for="exampleFormControlInput1">Start date</label>
+        <input type="date" name="startdate" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="form-group py-2">
+        <label for="exampleFormControlInput1">End date</label>
+        <input type="date" name="enddate" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="form-group py-2">
+        <label for="exampleFormControlInput1">Capacity</label>
+        <input type="number" name="capacity" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="d-grid gap-2 py-4">
+        <button class="btn btn-primary" type="submit">Add Cource</button>
+      </div>
+
+    </form>
+</div>
+
+{% endblock %}
